@@ -13,12 +13,41 @@
 
         The NoteBookBuilder creates Blocks in order of appearance of the tags in the input file.
 */
+using System.Text.RegularExpressions;
 
 string inputFilePath = "TestSp2.sql";
 string outputFilePath = "TestSp2.ipynb";
 
+var tagTypes = new List<TagType>
+{
+    new TagType
+    {
+        Name = "SignedComment",
+        Pattern = new Regex(@"^\s*--\s*SignedComment:"),
+        IsSimple = true
+    },
+    new TagType
+    {
+        Name = "NewCellBegin",
+        Pattern = new Regex(@"^\s*--\s*NewCellBegin_\d+"),
+        IsOpening = true
+    },
+    new TagType
+    {
+        Name = "NewCellEnd",
+        Pattern = new Regex(@"^\s*--\s*NewCellEnd_\d+"),
+        IsClosing = true
+    },
+    new TagType
+    {
+        Name = "DemoWhere",
+        Pattern = new Regex(@"^\s*--\s*DemoWhere:"),
+        IsSimple = true
+    }
+};
+
 // Analyze the input file
-Analyzer analyzer = new Analyzer();
+Analyzer analyzer = new Analyzer(tagTypes);
 List<Tagger> taggers = analyzer.Analyze(inputFilePath);
 
 // Build blocks from tags

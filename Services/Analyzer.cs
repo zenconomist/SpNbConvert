@@ -2,52 +2,60 @@ using System.Text.RegularExpressions;
 
 class Analyzer
 {
+    private List<TagType> _tagTypes;
+
+    public Analyzer(List<TagType> tagTypes)
+    {
+        _tagTypes = tagTypes;
+    }
+
     public List<Tagger> Analyze(string inputFilePath)
     {
         var taggers = new List<Tagger>();
         var lines = File.ReadAllLines(inputFilePath);
-        
-        Regex signedCommentRegex = new Regex(@"^\s*--\s*SignedComment:", RegexOptions.IgnoreCase);
-        Regex newCellBeginRegex = new Regex(@"^\s*--\s*NewCellBegin_(\d+)", RegexOptions.IgnoreCase);
-        Regex newCellEndRegex = new Regex(@"^\s*--\s*NewCellEnd_(\d+)", RegexOptions.IgnoreCase);
-        Regex demoWhereRegex = new Regex(@"^\s*--\s*DemoWhere:", RegexOptions.IgnoreCase);
 
         for (int i = 0; i < lines.Length; i++)
         {
             string line = lines[i];
 
-            if (signedCommentRegex.IsMatch(line))
+            foreach (var tagType in _tagTypes)
             {
-                taggers.Add(new Tagger(Guid.NewGuid().ToString(), "SignedComment", i, -1, taggers.Count));
-            }
-            else
-            {
-                Match newCellBeginMatch = newCellBeginRegex.Match(line);
-                if (newCellBeginMatch.Success)
+                Match match = tagType.Pattern.Match(line);
+
+                if (match.Success)
                 {
-                    string tag = "NewCellBegin_" + newCellBeginMatch.Groups[1].Value;
-                    taggers.Add(new Tagger(Guid.NewGuid().ToString(), tag, i, -1, taggers.Count));
-                }
-                else
-                {
-                    Match newCellEndMatch = newCellEndRegex.Match(line);
-                    if (newCellEndMatch.Success)
+                    int closingLine = -1;
+
+                    if (tagType.IsOpening)
                     {
-                        string openingTag = "NewCellBegin_" + newCellEndMatch.Groups[1].Value;
-                        var openingTagger = taggers.LastOrDefault(t => t.Tag == openingTag && t.ClosingLine == -1);
-                        if (openingTagger != null)
+                        var closingTagType = _tagTypes.FirstOrDefault(t => t.Name == tagType.Name && t.IsClosing);
+
+                        if (closingTagType != null)
                         {
-                            openingTagger.ClosingLine = i;
+                            closingLine = FindClosingLine(lines, closingTagType.Pattern, i);
                         }
                     }
-                    else if (demoWhereRegex.IsMatch(line))
-                    {
-                        taggers.Add(new Tagger(Guid.NewGuid().ToString(), "DemoWhere", i, -1, taggers.Count));
-                    }
+
+                    var tagger = new Tagger(Guid.NewGuid().ToString(), tagType.Name, i, closingLine, taggers.Count);
+                    taggers.Add(tagger);
                 }
             }
         }
 
         return taggers;
     }
+
+    private int FindClosingLine(string[] lines, Regex closingPattern, int openingLine)
+    {
+        for (int i = openingLine + 1; i < lines.Length; i++)
+        {
+            if (closingPattern.IsMatch(lines[i]))
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
 }
