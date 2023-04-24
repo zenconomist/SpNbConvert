@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Cf6ArMyHQxVhO7sNYucQQYNx+4ew09Z2pBrx60E7B4DrbxM5NJ2TkcM90N6R8brOHynmynLNvn32+X5U8xmKPw==",
+  "success": true,
+  "projectFilePath": "/Users/kreiszzsolt/work/projects/2023/CSharp/SpNbConvert/SpNbConvert.csproj",
+  "expectedPackageFiles": [
+    "/Users/kreiszzsolt/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

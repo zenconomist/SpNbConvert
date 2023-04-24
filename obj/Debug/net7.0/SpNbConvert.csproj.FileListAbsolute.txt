@@ -1,0 +1,17 @@
+/Users/kreiszzsolt/work/projects/2023/CSharp/SpNbConvert/bin/Debug/net7.0/SpNbConvert
+/Users/kreiszzsolt/work/projects/2023/CSharp/SpNbConvert/bin/Debug/net7.0/SpNbConvert.deps.json
+/Users/kreiszzsolt/work/projects/2023/CSharp/SpNbConvert/bin/Debug/net7.0/SpNbConvert.runtimeconfig.json
+/Users/kreiszzsolt/work/projects/2023/CSharp/SpNbConvert/bin/Debug/net7.0/SpNbConvert.dll
+/Users/kreiszzsolt/work/projects/2023/CSharp/SpNbConvert/bin/Debug/net7.0/SpNbConvert.pdb
+/Users/kreiszzsolt/work/projects/2023/CSharp/SpNbConvert/bin/Debug/net7.0/Newtonsoft.Json.dll
+/Users/kreiszzsolt/work/projects/2023/CSharp/SpNbConvert/obj/Debug/net7.0/SpNbConvert.csproj.AssemblyReference.cache
+/Users/kreiszzsolt/work/projects/2023/CSharp/SpNbConvert/obj/Debug/net7.0/SpNbConvert.GeneratedMSBuildEditorConfig.editorconfig
+/Users/kreiszzsolt/work/projects/2023/CSharp/SpNbConvert/obj/Debug/net7.0/SpNbConvert.AssemblyInfoInputs.cache
+/Users/kreiszzsolt/work/projects/2023/CSharp/SpNbConvert/obj/Debug/net7.0/SpNbConvert.AssemblyInfo.cs
+/Users/kreiszzsolt/work/projects/2023/CSharp/SpNbConvert/obj/Debug/net7.0/SpNbConvert.csproj.CoreCompileInputs.cache
+/Users/kreiszzsolt/work/projects/2023/CSharp/SpNbConvert/obj/Debug/net7.0/SpNbConvert.csproj.CopyComplete
+/Users/kreiszzsolt/work/projects/2023/CSharp/SpNbConvert/obj/Debug/net7.0/SpNbConvert.dll
+/Users/kreiszzsolt/work/projects/2023/CSharp/SpNbConvert/obj/Debug/net7.0/refint/SpNbConvert.dll
+/Users/kreiszzsolt/work/projects/2023/CSharp/SpNbConvert/obj/Debug/net7.0/SpNbConvert.pdb
+/Users/kreiszzsolt/work/projects/2023/CSharp/SpNbConvert/obj/Debug/net7.0/SpNbConvert.genruntimeconfig.cache
+/Users/kreiszzsolt/work/projects/2023/CSharp/SpNbConvert/obj/Debug/net7.0/ref/SpNbConvert.dll
